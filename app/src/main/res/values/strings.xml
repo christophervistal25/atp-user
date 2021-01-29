@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">ATPUser</string>
+    <string name="middlename">Middlename</string>
+    <string name="lastname">Lastname</string>
+    <string name="firstname">Firstname</string>
+    <string name="name_extension">Suffix</string>
+    <string name="submit">Create an account</string>
+    <string name="civil_status">Civil Status</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email_label">Email</string>
+    <string name="province_label">Province</string>
+    <string name="municipality_label">Municipality</string>
+    <string name="barangay_label">Barangay</string>
+    <string name="purok_label">Purok</string>
+    <string name="street_label">Street</string>
+    <string name="age_label">Age</string>
+    <string name="generate_qr_title">TITLE</string>
+    <string name="validation_error">Please check this field.</string>
+    <string name="please_sign_in_to_continue">Please Sign in to continue</string>
+    <string name="mobile_label">Mobile Number</string>
+    <string name="password_label">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="password_hint">••••••••••••</string>
+    <string-array name="civil_status">
+        <item>Single</item>
+        <item>Single Parent</item>
+        <item>Married</item>
+        <item>Separated</item>
+        <item>Widow</item>
+        <item>Widowed</item>
+        <item>Annulled</item>
+    </string-array>
+
+
+</resources>
