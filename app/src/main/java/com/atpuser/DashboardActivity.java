@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import smartdevelop.ir.eram.showcaseviewlib.GuideView;
+
 public class DashboardActivity extends AppCompatActivity {
 
     private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
@@ -45,10 +47,11 @@ public class DashboardActivity extends AppCompatActivity {
     public final static String STR = "A string to be encoded as QR code";
 
     public final static int TRACK_RECORDS = 0;
-    public final static int PREVENT_COVID = 1;
-    public final static int SIGN_OUT = 2;
+    public final static int COVID_STATS = 1;
+    public final static int PREVENT_COVID = 2;
+    public final static int SIGN_OUT = 3;
 
-    List<String> userOptions = new ArrayList<>(Arrays.asList("Track your records", "Prevent the spread of COVID-19", "Sign out"));
+    List<String> userOptions = new ArrayList<>(Arrays.asList("Track your records", "COVID-19 stats", "Prevent the spread of COVID-19", "Sign out"));
 
 
     AlertDialog.Builder userOptionDialog;
@@ -96,6 +99,12 @@ public class DashboardActivity extends AppCompatActivity {
 
         if(SharedPref.getSharedPreferenceBoolean(this,"FIRST_VISIT", true)) {
             this.notificationDialog();
+            new GuideView.Builder(this)
+                    .setTitle("Guide")
+                    .setContentText("By clicking your photo a list of option will show up.")
+                    .setTargetView(userImage)
+                    .build()
+                    .show();
             SharedPref.setSharedPreferenceBoolean(this,"FIRST_VISIT", false);
         }
 
@@ -112,12 +121,14 @@ public class DashboardActivity extends AppCompatActivity {
         userImage.setOnClickListener(v -> {
             ArrayAdapter<String> userOptionAdapter = new ArrayAdapter<>(DashboardActivity.this, android.R.layout.simple_spinner_dropdown_item, userOptions);
             userOptionDialog = new AlertDialog.Builder(DashboardActivity.this);
-            userOptionDialog.setTitle("Options");
+            userOptionDialog.setTitle("Select");
             userOptionDialog.setAdapter(userOptionAdapter, (d, w) -> {
                 String selectedOption = userOptionAdapter.getItem(w);
                 int select = userOptionAdapter.getPosition(selectedOption);
                 if (select == SIGN_OUT) {
                     signOut();
+                } else if(select == COVID_STATS) {
+                   redirectToStats();
                 } else if(select == PREVENT_COVID) {
                     redirectToPinActivity();
                 }
@@ -130,6 +141,11 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void redirectToPinActivity() {
         Intent mainActivity = new Intent(DashboardActivity.this, PreventActivity.class);
+        startActivity(mainActivity);
+    }
+
+    private void redirectToStats() {
+        Intent mainActivity = new Intent(DashboardActivity.this, CovidStatsActivity.class);
         startActivity(mainActivity);
     }
 

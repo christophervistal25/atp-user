@@ -95,7 +95,6 @@
                             android:singleLine="true"
                             android:maxLength="4"
                             android:padding="16dp"
-                            android:textSize="19sp"
                             android:textStyle="bold"
                             android:fontFamily="@font/product_sans"
                             android:gravity="center"
@@ -103,6 +102,8 @@
                             android:inputType="textPassword"
                             android:textIsSelectable="true"
                             android:focusable="false"
+                            android:textSize="30sp"
+                            android:textColor="#303030"
                         />
 
                     </LinearLayout>

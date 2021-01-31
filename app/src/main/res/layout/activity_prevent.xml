@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".PreventActivity">
 
     <RelativeLayout
@@ -19,9 +20,10 @@
 
             <TextView
                 android:text="How can you prevent the spread of COVID-19?"
+                android:gravity="center"
                 android:fontFamily="@font/product_sans"
                 android:textSize="19sp"
-                android:textColor="#5D1FCC"
+                android:textColor="#303030"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

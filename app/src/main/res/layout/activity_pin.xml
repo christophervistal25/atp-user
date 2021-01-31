@@ -103,7 +103,8 @@
                 android:padding="16dp"
                 android:singleLine="true"
                 android:textIsSelectable="true"
-                android:textSize="19sp"
+                android:textSize="30sp"
+                android:textColor="#303030"
                 android:textStyle="bold" />
 
         </LinearLayout>
