@@ -55,15 +55,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <TextView
-            android:text="Please check your SMS and enter\nOTP to activate your account."
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:textColor="#303030"
-            android:textSize="19sp"
-            android:fontFamily="@font/product_sans"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+<!--        <TextView-->
+<!--            android:text="Please check your SMS and enter\nOTP to activate your account."-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:textColor="#303030"-->
+<!--            android:textSize="19sp"-->
+<!--            android:fontFamily="@font/product_sans"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
 
         <LinearLayout
             android:id="@+id/codeLayout"
@@ -72,19 +72,23 @@
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
 
+<!--            android:inputType="none"-->
+<!--            android:textIsSelectable="true"-->
+<!--            android:focusable="false"-->
+<!--            -->
             <EditText
                 android:id="@+id/code1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:singleLine="true"
                 android:maxLength="1"
-                android:layout_marginRight="5dp"
+                android:inputType="number"
                 android:layout_marginEnd="5dp"
+                android:fontFamily="@font/product_sans"
                 android:focusedByDefault="true"
-                android:background="@drawable/textbox"
+                android:background="@drawable/border_primary"
                 android:tag="0"
                 android:gravity="center"
-                android:inputType="number"
                 tools:ignore="UnusedAttribute" />
 
             <EditText
@@ -93,12 +97,12 @@
                 android:layout_height="50dp"
                 android:singleLine="true"
                 android:maxLength="1"
-                android:layout_marginRight="5dp"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/textbox"
+                android:fontFamily="@font/product_sans"
+                android:background="@drawable/border_primary"
                 android:tag="1"
-                android:gravity="center"
                 android:inputType="number"
+                android:gravity="center"
                 />
 
             <EditText
@@ -107,9 +111,9 @@
                 android:layout_height="50dp"
                 android:singleLine="true"
                 android:maxLength="1"
-                android:layout_marginRight="5dp"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/textbox"
+                android:fontFamily="@font/product_sans"
+                android:background="@drawable/border_primary"
                 android:tag="2"
                 android:gravity="center"
                 android:inputType="number"
@@ -121,12 +125,12 @@
                 android:layout_height="50dp"
                 android:singleLine="true"
                 android:maxLength="1"
-                android:layout_marginRight="5dp"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/textbox"
+                android:fontFamily="@font/product_sans"
+                android:background="@drawable/border_primary"
                 android:tag="3"
-                android:gravity="center"
                 android:inputType="number"
+                android:gravity="center"
                 />
 
             <EditText
@@ -135,9 +139,9 @@
                 android:layout_height="50dp"
                 android:singleLine="true"
                 android:maxLength="1"
-                android:layout_marginRight="5dp"
                 android:layout_marginEnd="5dp"
-                android:background="@drawable/textbox"
+                android:fontFamily="@font/product_sans"
+                android:background="@drawable/border_primary"
                 android:tag="4"
                 android:gravity="center"
                 android:inputType="number"
@@ -149,8 +153,9 @@
                 android:layout_height="50dp"
                 android:singleLine="true"
                 android:maxLength="1"
-                android:background="@drawable/textbox"
+                android:background="@drawable/border_primary"
                 android:tag="5"
+                android:fontFamily="@font/product_sans"
                 android:gravity="center"
                 android:inputType="number"
                 />

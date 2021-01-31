@@ -25,4 +25,7 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE id =:id")
     User find(int id);
 
+
+    @Query("SELECT * FROM users WHERE phone_number =:phone_number")
+    User findByPhone(String phone_number);
 }

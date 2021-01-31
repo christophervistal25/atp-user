@@ -25,21 +25,21 @@
             android:layout_height="wrap_content" />
 
 
-<!--        android:textColor="#E74C3C"-->
-
-
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
-            android:text="For smooth registration make sure you have LOAD balance and good SMS signal."
-            android:textColor="#FF00C853"
+            android:text="@string/message_helper"
+            android:textColor="#303030"
             />
+<!--        android:textColor="#FF00C853"-->
 
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="#F2F3F4" />
 
 
         <LinearLayout
@@ -47,6 +47,7 @@
             android:layout_marginBottom="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
+            android:background="@drawable/border_primary"
             android:layout_height="wrap_content">
 
             <ImageView
@@ -59,7 +60,7 @@
 
             <Button
                 android:id="@+id/btnCamera"
-                android:text="take / attach"
+                android:text="@string/photo_string"
                 android:fontFamily="@font/product_sans"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
@@ -107,6 +108,7 @@
             android:padding="10dp"
             android:layout_marginBottom="20sp"
             android:singleLine="true"
+            android:text="VISTAL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -140,6 +142,7 @@
             android:padding="10dp"
             android:layout_marginBottom="20sp"
             android:singleLine="true"
+            android:text="CHRISTOPHER"
             android:inputType="textCapCharacters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -215,6 +218,7 @@
             android:layout_marginBottom="20sp"
             android:singleLine="true"
             android:inputType="number"
+            android:text="24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -283,6 +287,8 @@
             android:layout_marginBottom="20sp"
             android:singleLine="true"
             android:inputType="phone"
+            android:text="+639630711082"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -444,6 +450,7 @@
             android:singleLine="true"
             android:inputType="textCapCharacters"
             android:layout_width="match_parent"
+            android:text="PUROK"
             android:layout_height="wrap_content"/>
 
         <TextView
@@ -460,6 +467,28 @@
             android:inputType="textCapCharacters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/termsAndPrivacyCheckbox"
+                android:fontFamily="@font/product_sans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/termsAndPrivacy"
+                android:text="I have read and accepted the Terms of Use and Privacy Policy"
+                android:layout_gravity="top"
+                android:fontFamily="@font/product_sans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
 
         <Button

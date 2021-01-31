@@ -1,43 +1,114 @@
 package com.atpuser;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.atpuser.Database.DB;
+import com.atpuser.Database.Models.User;
+import com.atpuser.Helpers.SharedPref;
+import com.davidmiguel.numberkeyboard.NumberKeyboard;
+import com.davidmiguel.numberkeyboard.NumberKeyboardListener;
 
 public class RegisterStep3Activity extends AppCompatActivity     {
 
 
-    TextView code;
+    EditText code;
+
+    boolean isConfirmed = false;
+    String firstPinInput = "";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_step3);
+        SharedPref.setSharedPreferenceInt(this, "REGISTER_STAGE", 3);
 
-        code = findViewById(R.id.code);
+        NumberKeyboard numberKeyboard = findViewById(R.id.pinKeyboard);
 
+        numberKeyboard.setListener(new NumberKeyboardListener() {
+            @Override
+            public void onNumberClicked(int i) {
+                code.setText(code.getText().toString().concat(String.valueOf(i)));
+            }
 
-        findViewById(R.id.btn1).setOnClickListener(v -> code.setText(code.getText().toString().concat("1")));
-        findViewById(R.id.btn2).setOnClickListener(v -> code.setText(code.getText().toString().concat("2")));
-        findViewById(R.id.btn3).setOnClickListener(v -> code.setText(code.getText().toString().concat("3")));
-        findViewById(R.id.btn4).setOnClickListener(v -> code.setText(code.getText().toString().concat("4")));
-        findViewById(R.id.btn5).setOnClickListener(v -> code.setText(code.getText().toString().concat("5")));
-        findViewById(R.id.btn6).setOnClickListener(v -> code.setText(code.getText().toString().concat("6")));
-        findViewById(R.id.btn7).setOnClickListener(v -> code.setText(code.getText().toString().concat("7")));
-        findViewById(R.id.btn8).setOnClickListener(v -> code.setText(code.getText().toString().concat("8")));
-        findViewById(R.id.btn9).setOnClickListener(v -> code.setText(code.getText().toString().concat("9")));
-        findViewById(R.id.btn0).setOnClickListener(v -> code.setText(code.getText().toString().concat("0")));
+            @Override
+            public void onLeftAuxButtonClicked() {
+            }
 
-        findViewById(R.id.btnX).setOnClickListener(v -> {
-            if(code.getText().length() != 0) {
-                code.setText(
-                        code.getText().toString().substring(0, code.getText().length() - 1)
-                );
+            @Override
+            public void onRightAuxButtonClicked() {
+                erase();
             }
         });
 
+        TextView title = findViewById(R.id.title);
+        code = findViewById(R.id.code);
+
+        code.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length() >= 4) {
+
+                    if(!isConfirmed) {
+                        title.setText("RE-ENTER YOUR MPIN");
+                        isConfirmed = true;
+                        firstPinInput = code.getText().toString();
+                        code.setText("");
+                        Toast.makeText(RegisterStep3Activity.this, "Confirmation of MPIN is required", Toast.LENGTH_LONG).show();
+                    } else {
+                        if(firstPinInput.equals(code.getText().toString())) {
+                            // Update the otp pin of user
+                            String userPhone = SharedPref.getSharedPreferenceString(getApplicationContext(), "USER_PHONE_NUMBER", "");
+                            User user = DB.getInstance(getApplicationContext()).userDao().findByPhone(userPhone);
+                            user.setOtp_code(code.getText().toString());
+                            DB.getInstance(getApplicationContext()).userDao().update(user);
+
+                            // Clear the stage of the Registration.
+                            SharedPref.setSharedPreferenceInt(getApplicationContext(), "REGISTER_STAGE", 0);
+                            SharedPref.setSharedPreferenceInt(getApplicationContext(), "USER_LOGGED_IN", user.getId());
+
+
+                            // Redirect to dashboard.
+                            Intent mainActivity = new Intent(RegisterStep3Activity.this, DashboardActivity.class);
+                            mainActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(mainActivity);
+                        } else {
+                            code.setError("MPin not match!");
+                            Toast.makeText(RegisterStep3Activity.this, "First and Confirmed MPIN not Match!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                }
+            }
+        });
+
+
+    }
+
+    private void erase() {
+        if(code.getText().length() != 0) {
+            code.setText(
+                    code.getText().toString().substring(0, code.getText().length() - 1)
+            );
+        }
     }
 
 

@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">ATPUser</string>
+    <string name="app_name">SurSur ATP</string>
+
+    <string name="GATEWAY_NUMBER">+639630711082</string>
+    <string name="GATEWAY_NUMBER_2">09630711082</string>
+
+
     <string name="middlename">Middlename</string>
     <string name="lastname">Lastname</string>
     <string name="firstname">Firstname</string>
@@ -16,12 +21,24 @@
     <string name="age_label">Age</string>
     <string name="generate_qr_title">TITLE</string>
     <string name="validation_error">Please check this field.</string>
+    <string name="login_validation_error">Mobile Number / MPIN is invalid!</string>
     <string name="please_sign_in_to_continue">Please Sign in to continue</string>
     <string name="mobile_label">Mobile Number</string>
-    <string name="password_label">Password</string>
+    <string name="password_label">MPIN</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="password_hint">••••••••••••</string>
+    <string name="terms">
+
+    </string>
+    <string name="message_helper">For smooth registration make sure you have LOAD balance and good SMS signal.</string>
+    <string name="photo_string">take / attach</string>
+    <string name="enter_your_mpin">Enter your MPIN</string>
+    <string name="mpin_label">ENTER YOUR MPIN</string>
+    <string name="duplicate_phone_number">Phone Number already exists</string>
+    <string name="please_provide_your_mpin">PLEASE PROVIDE YOUR MPIN</string>
+
+
     <string-array name="civil_status">
         <item>Single</item>
         <item>Single Parent</item>

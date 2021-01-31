@@ -1,40 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    android:background="@drawable/bg"
+    android:background="@drawable/bg_2"
     tools:context=".RegisterStep3Activity">
 
 
     <LinearLayout
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:src="@drawable/capitol_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/product_sans"
+            android:layout_marginTop="5dp"
+            android:textColor="#5000CA"
+            android:text="ATP (Action Trace &amp; Protect)"
+            />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#F2F3F4" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/logo"
         android:id="@+id/pageTitle"
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:text="SET UP YOUR MPIN"
-            android:textAlignment="center"
-            android:layout_marginTop="10dp"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            android:textColor="#303030"
-            android:fontFamily="@font/product_sans"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal" />
-
-        <ImageView
-            android:src="@drawable/setup_pin"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitCenter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
@@ -43,213 +63,62 @@
 
 
     <LinearLayout
-        android:layout_below="@id/pageTitle"
+        android:layout_below="@id/logo"
         android:id="@+id/passCodeLayout"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
 
+                <TextView
+                    android:id="@+id/title"
+                    android:text="@string/mpin_label"
+                    android:textSize="18sp"
+                    android:textColor="#303030"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:id="@+id/codeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
+                    <LinearLayout
+                        android:id="@+id/codeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/code"
-                android:layout_width="match_parent"
-                android:singleLine="true"
-                android:maxLength="6"
-                android:padding="13dp"
-                android:textSize="19sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/product_sans"
-                android:background="#F2F3F4"
-                android:gravity="center"
-                android:layout_height="wrap_content"/>
+<!--                        android:background="@drawable/border_primary"-->
 
-        </LinearLayout>
+                        <EditText
+                            android:id="@+id/code"
+                            android:layout_width="match_parent"
+                            android:singleLine="true"
+                            android:maxLength="4"
+                            android:padding="16dp"
+                            android:textSize="19sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/product_sans"
+                            android:gravity="center"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:textIsSelectable="true"
+                            android:focusable="false"
+                        />
 
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_below="@+id/passCodeLayout"
-        android:id="@+id/firstRow"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:padding="10dp"
-        android:gravity="center_horizontal"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <Button
-            android:id="@+id/btn1"
-            android:background="@drawable/circle_btn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:text="1" />
-
-        <Button
-            android:id="@+id/btn2"
-            android:background="@drawable/circle_btn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:textStyle="bold"
-            android:textSize="17sp"
-            android:text="2"
-             />
-
-        <Button
-            android:id="@+id/btn3"
-            android:background="@drawable/circle_btn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:text="3" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/secondRow"
-        android:layout_below="@+id/firstRow"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="horizontal"
-        >
-
-        <Button
-            android:id="@+id/btn4"
-            android:background="@drawable/circle_btn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:text="4" />
-
-        <Button
-            android:id="@+id/btn5"
-            android:background="@drawable/circle_btn"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:text="5" />
-
-
-        <Button
-            android:id="@+id/btn6"
-            android:background="@drawable/circle_btn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:text="6" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/thirdRow"
-        android:layout_below="@+id/secondRow"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn7"
-            android:background="@drawable/circle_btn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:text="7" />
-
-        <Button
-            android:id="@+id/btn8"
-            android:background="@drawable/circle_btn"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:text="8" />
-
-        <Button
-            android:id="@+id/btn9"
-            android:background="@drawable/circle_btn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:text="9" />
-
-    </LinearLayout>
+                    </LinearLayout>
 
 
 
-    <LinearLayout
-        android:id="@+id/fourthRow"
-        android:layout_below="@+id/thirdRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        >
+                </LinearLayout>
 
-        <Button
-            android:id="@+id/btn0"
-            android:background="@drawable/circle_btn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="90dp"
-            android:layout_marginRight="20dp"
-            android:text="0"
-            android:layout_marginStart="90dp"
-            android:layout_marginEnd="20dp" />
+            <com.davidmiguel.numberkeyboard.NumberKeyboard
+                android:id="@+id/pinKeyboard"
+                android:layout_width="260dp"
+                android:layout_height="400dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                app:numberkeyboard_keyboardType="integer"
+                tools:ignore="MissingClass,NotSibling" />
 
 
-        <Button
-            android:id="@+id/btnX"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/circle_btn"
-            android:backgroundTint="@color/black"
-            android:text="X"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
-
-    </LinearLayout>
-
-
-
-
-
-</RelativeLayout>
+            </RelativeLayout>

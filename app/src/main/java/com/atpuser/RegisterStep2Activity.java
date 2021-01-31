@@ -1,38 +1,49 @@
 package com.atpuser;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.atpuser.Helpers.SharedPref;
 
 public class RegisterStep2Activity extends AppCompatActivity {
 
     public static final String CODE = "123456";
     LinearLayout codeLayout;
     EditText code1, code2, code3, code4, code5, code6;
-    TextView resentOtp;
+    TextView resentOtp, userPhoneNumber;
+    public static final String GATEWAY_NUMBER = "+639630711082";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_step2);
-        Bundle extra = getIntent().getExtras();
+        SharedPref.setSharedPreferenceInt(this, "REGISTER_STAGE", 2);
 
-        String phone = "09193693499";
+
+        Bundle extra = getIntent().getExtras();
 
         Button btnClearCode = findViewById(R.id.btnClearCode);
         resentOtp = findViewById(R.id.resendOTP);
 
-        TextView userPhoneNumber = findViewById(R.id.userPhoneNumber);
-//        userPhoneNumber.setText(extra.getString("PHONE_NUMBER"));
-        userPhoneNumber.setText(replaceOtherParts(phone));
+        userPhoneNumber = findViewById(R.id.userPhoneNumber);
+
+        Intent intent = getIntent();
+
+        if (intent.hasExtra("PHONE_NUMBER")) {
+            userPhoneNumber.setText(extra.getString("PHONE_NUMBER"));
+        } else {
+            userPhoneNumber.setText(SharedPref.getSharedPreferenceString(this, "USER_PHONE_NUMBER", ""));
+        }
 
         code1 = findViewById(R.id.code1);
         code2 = findViewById(R.id.code2);
@@ -73,8 +84,7 @@ public class RegisterStep2Activity extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable s) {
                         if(codeChecker(CODE)) {
-                            Intent mainActivity = new Intent(RegisterStep2Activity.this, RegisterStep3Activity.class);
-                            startActivity(mainActivity);
+                            gotoRegistrationStep3();
                         }
                     }
                 });
@@ -91,7 +101,22 @@ public class RegisterStep2Activity extends AppCompatActivity {
         });
 
 
-        resentOtp.setOnClickListener(v -> Toast.makeText(RegisterStep2Activity.this, "Resend OTP", Toast.LENGTH_SHORT).show());
+        resentOtp.setOnClickListener(v -> {
+            this.requestCode();
+        });
+        
+    }
+
+    private void requestCode() {
+        PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent("SMS_SENT"), 0);
+        PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent("SMS_DELIVERED"), 0);
+        SmsManager.getDefault().sendTextMessage(GATEWAY_NUMBER, null, "REQUEST_CODE", sentPI, deliveredPI);
+    }
+
+
+    private void gotoRegistrationStep3() {
+        Intent mainActivity = new Intent(RegisterStep2Activity.this, RegisterStep3Activity.class);
+        startActivity(mainActivity);
     }
 
     private String replaceOtherParts(String phone) {
